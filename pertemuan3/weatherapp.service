@@ -1,0 +1,13 @@
+[Unit]
+Description=Dashboard Cuaca MK37 (Flask)
+After=network-online.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/home/ubuntu/weather-app
+ExecStart=/home/ubuntu/weather-app/venv/bin/python /home/ubuntu/weather-app/app_web.py
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

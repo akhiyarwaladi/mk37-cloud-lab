@@ -1,0 +1,10 @@
+# ============================================================
+# MK37 Pertemuan 3 - Crontab produksi (Langkah 18)
+# Tempel ke crontab -e setelah entri uji dihapus.
+# Kode identik dengan modul PDF; kredensial diganti placeholder.
+# ============================================================
+
+# ---- Jadwal produksi: laporan pagi 07:00 WIB = 00:00 UTC (Langkah 18) ----
+# m h dom mon command
+0 0 * * * /home/ubuntu/weather-app/venv/bin/python /home/ubuntu/weather-app/kirim_email.py >> /home/ubuntu/weather-app/cron.log 2>&1
+

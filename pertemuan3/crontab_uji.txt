@@ -1,0 +1,12 @@
+# ============================================================
+# MK37 Pertemuan 3 - Entri crontab uji (Langkah 17)
+# Tempel SALAH SATU blok baris ke crontab -e; hapus setelah eksperimen selesai.
+# Kode identik dengan modul PDF; kredensial diganti placeholder.
+# ============================================================
+
+# ---- Uji tercepat: setiap menit (Langkah 17.3) ----
+* * * * * /usr/bin/python3 /home/ubuntu/weather-app/waktu_logger.py >> /home/ubuntu/weather-app/cron.log 2>&1
+
+# ---- Uji jadwal lebih jarang: setiap 5 menit (Langkah 17.5) ----
+*/5 * * * * /usr/bin/python3 /home/ubuntu/weather-app/waktu_logger.py >> /home/ubuntu/weather-app/cron.log 2>&1
+

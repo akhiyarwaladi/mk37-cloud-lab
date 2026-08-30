@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <title>Dashboard Cuaca {{ cuaca.name }}</title>
+  <meta http-equiv="refresh" content="600">
+  <style>
+    body { font-family: sans-serif; background: #eef3f8; }
+    .kartu { background: white; max-width: 420px; margin: 3rem auto;
+             padding: 2rem; border-radius: 12px;
+             box-shadow: 0 2px 8px rgba(0,0,0,.15);
+             text-align: center; }
+    .suhu { font-size: 3.2rem; color: #003366; margin: .5rem 0; }
+  </style>
+</head>
+<body>
+  <div class="kartu">
+    <h1>Cuaca {{ cuaca.name }}, {{ cuaca.sys.country }}</h1>
+    <p class="suhu">{{ "%.1f"|format(cuaca.main.temp) }} C</p>
+    <p>{{ cuaca.weather[0].description | capitalize }}</p>
+    <p>Terasa {{ "%.1f"|format(cuaca.main.feels_like) }} C
+       | Kelembaban {{ cuaca.main.humidity }}%</p>
+    <small>Perbarui otomatis tiap 10 menit</small>
+  </div>
+</body>
+</html>
