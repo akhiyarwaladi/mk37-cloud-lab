@@ -5,11 +5,14 @@
 # Kode identik dengan modul PDF; kredensial diganti placeholder.
 # ============================================================
 
-# ---- Langkah 6.1: perbarui paket dan pasang prasyarat Python ----
+# ---- Langkah 6.1: periksa Python bawaan server ----
+python3 --version
+
+# ---- Langkah 6.2: perbarui paket dan pasang python3-venv, pip, curl ----
 sudo apt update
 sudo apt install -y python3-venv python3-pip curl
 
-# ---- Langkah 6.2: uji API dengan curl (ganti ISI_API_KEY_ANDA) ----
+# ---- Langkah 6.3: uji API dengan curl (ganti ISI_API_KEY_ANDA) ----
 curl -s "https://api.openweathermap.org/data/2.5/weather?q=Jambi,ID&appid=ISI_API_KEY_ANDA&units=metric&lang=id"
 
 # ---- Langkah 7: folder proyek dan virtual environment ----

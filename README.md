@@ -3,7 +3,7 @@
 Repositori kode pendamping modul praktikum **MK37 Cloud Computing**
 (Program Studi Informatika, Universitas Jambi):
 
-- `pertemuan3/` - Membangun Aplikasi Cuaca di Amazon EC2 (OpenWeatherMap API,
+- `pertemuan3/` - Pemanfaatan Amazon EC2 (OpenWeatherMap API,
   dashboard Flask, systemd, laporan email Gmail + cron)
 - `pertemuan4/` - Penyimpanan Objek dengan Amazon S3 (bucket, AWS CLI,
   integrasi EC2 -> S3, presigned URL)
