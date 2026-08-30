@@ -46,8 +46,8 @@ def kirim_ocr(path_gambar):
 
 def simulasi():
     """Jawaban tiruan tanpa jaringan, untuk menguji pipeline."""
-    return {"nama_formulir": "C1 Plano (simulasi)", "tps": "036",
-            "jumlah_sah": 203, "jumlah_tidak_sah": 8,
+    return {"nama_formulir": "C1 Plano (simulasi)",
+            "tps": "036", "jumlah_sah": 203, "jumlah_tidak_sah": 8,
             "catatan": "hasil tiruan untuk uji pipeline"}
 
 if __name__ == "__main__":
