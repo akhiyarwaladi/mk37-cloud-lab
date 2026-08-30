@@ -1,0 +1,8 @@
+{
+  "coord": { "lon": 103.6131, "lat": -1.6101 },
+  "weather": [ { "main": "Clouds", "description": "tersebar", "icon": "03d" } ],
+  "main": { "temp": 31.0, "feels_like": 36.5, "humidity": 74 },
+  "wind": { "speed": 3.1 },
+  "name": "Jambi",
+  "cod": 200
+}

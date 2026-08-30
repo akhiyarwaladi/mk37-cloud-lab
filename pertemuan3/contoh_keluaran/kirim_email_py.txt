@@ -1,0 +1,1 @@
+Laporan cuaca berhasil dikirim ke EMAIL_GMAIL_ANDA@gmail.com

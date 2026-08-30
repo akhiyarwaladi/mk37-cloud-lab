@@ -1,0 +1,2 @@
+ubuntu
+Linux ip-172-31-xx-xx 6.8.0-xxxx-generic ... x86_64 x86_64 x86_64 GNU/Linux

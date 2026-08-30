@@ -1,0 +1,6 @@
+Kota       : Jambi, ID
+Kondisi    : awan mendung
+Suhu       : 33.33 C
+Terasa     : 36.09 C
+Kelembaban : 47 %
+Angin      : 1.83 m/s

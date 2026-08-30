@@ -1,0 +1,4 @@
+AWS Access Key ID [None]: AKIAXXXXXXXXXXXXXXXX
+AWS Secret Access Key [None]: ********************************xxxx
+Default region name [None]: ap-southeast-3
+Default output format [None]: json
