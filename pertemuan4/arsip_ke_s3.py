@@ -1,3 +1,4 @@
+# Cuplikan: tambahkan ke kirim_email.py (letakkan setelah fungsi kirim)
 import subprocess
 
 BUCKET = "mk37-namaanda-angkaunik"   # ganti dengan nama bucket Anda
