@@ -19,6 +19,9 @@ Isi 0 bila ada angka yang tidak terbaca."""
 
 def kirim_ocr(path_gambar):
     """Kirim satu gambar C1, kembalikan hasil ekstraksi sebagai dict."""
+    if not BASE_URL or not API_KEY:
+        sys.exit("Atur OPENCODE_BASE_URL dan OPENCODE_API_KEY dulu, "
+                 "atau jalankan dengan --simulasi.")
     data = base64.b64encode(Path(path_gambar).read_bytes()).decode()
     isi = {
         "model": MODEL,
@@ -45,12 +48,7 @@ def simulasi():
             "catatan": "hasil tiruan untuk uji pipeline"}
 
 if __name__ == "__main__":
-    gambar = sys.argv[1] if len(sys.argv) > 1 else "scan_c1/c1-plano.jpeg"
-    if "--simulasi" in sys.argv:
-        hasil = simulasi()
-    else:
-        if not BASE_URL or not API_KEY:
-            sys.exit("Atur OPENCODE_BASE_URL dan OPENCODE_API_KEY dulu, "
-                     "atau jalankan ulang dengan --simulasi.")
-        hasil = kirim_ocr(gambar)
+    arg = sys.argv[1] if len(sys.argv) > 1 else ""
+    gambar = arg if arg and not arg.startswith("--") else "scan_c1/c1-plano.jpeg"
+    hasil = simulasi() if "--simulasi" in sys.argv else kirim_ocr(gambar)
     print(json.dumps(hasil, ensure_ascii=False, indent=2))

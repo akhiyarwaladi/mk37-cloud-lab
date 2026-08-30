@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # ============================================================
 # MK37 Pertemuan 4 - Langkah 3: Siapkan AWS CLI di Instans EC2
-# Jalankan berurutan dari sesi SSH instans Pertemuan 3.
+# Pilih SALAH SATU cara pasang: 3.2 (resmi AWS) atau 3.3 (snap).
 # Kode identik dengan modul PDF; kredensial diganti placeholder.
 # ============================================================
 
