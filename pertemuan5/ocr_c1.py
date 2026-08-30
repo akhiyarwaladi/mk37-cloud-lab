@@ -22,7 +22,10 @@ def kirim_ocr(path_gambar):
     if not BASE_URL or not API_KEY:
         sys.exit("Atur OPENCODE_BASE_URL dan OPENCODE_API_KEY dulu, "
                  "atau jalankan dengan --simulasi.")
-    data = base64.b64encode(Path(path_gambar).read_bytes()).decode()
+    path = Path(path_gambar)
+    if not path.exists():
+        sys.exit(f"Berkas {path_gambar} tidak ada; jalankan unduh_c1.py dulu.")
+    data = base64.b64encode(path.read_bytes()).decode()
     isi = {
         "model": MODEL,
         "messages": [{"role": "user", "content": [
