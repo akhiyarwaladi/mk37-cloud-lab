@@ -1,0 +1,9 @@
+# ============================================================
+# MK37 Pertemuan 5 - Crontab Pipeline OCR C1
+# Tempel ke crontab -e; 01.00 UTC = 08.00 WIB.
+# Kode identik dengan modul PDF; kredensial diganti placeholder.
+# ============================================================
+
+# ---- Langkah 7: jadwal pipeline harian 08.00 WIB ----
+0 1 * * * /home/ubuntu/weather-app/venv/bin/python /home/ubuntu/ocr-c1/pipeline_c1.py >> /home/ubuntu/ocr-c1/pipeline.log 2>&1
+

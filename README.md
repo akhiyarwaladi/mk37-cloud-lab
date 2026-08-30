@@ -7,6 +7,8 @@ Repositori kode pendamping modul praktikum **MK37 Cloud Computing**
   dashboard Flask, systemd, laporan email Gmail + cron)
 - `pertemuan4/` - Penyimpanan Objek dengan Amazon S3 (bucket, AWS CLI,
   integrasi EC2 -> S3, presigned URL)
+- `pertemuan5/` - Otomasi OCR Formulir C1 KPU (unduh terotomasi, arsip S3,
+  RDS MySQL, ekstraksi angka dengan model AI, cron)
 
 Panduan langkah demi langkah ada pada modul PDF masing-masing pertemuan;
 isi berkas di sini identik dengan kotak kode pada modul.
