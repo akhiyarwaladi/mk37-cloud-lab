@@ -11,6 +11,7 @@ chmod 400 ~/Downloads/mk37-keypair-namaanda.pem
 
 # ---- Langkah 5.2: hubungkan ke instans (ganti dengan IP publik Anda) ----
 ssh -i ~/Downloads/mk37-keypair-namaanda.pem ubuntu@18.139.xx.xx
+# Windows (PowerShell): ssh -i $env:USERPROFILE\Downloads\mk37-keypair-namaanda.pem ubuntu@18.139.xx.xx
 
 # ---- Verifikasi setelah masuk server ----
 whoami && uname -a

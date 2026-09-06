@@ -1,0 +1,9 @@
+tingkat 1: 11 OK
+tingkat 2: 1105 OK
+tingkat 3: 110507 OK
+tingkat 4: 1105072002 OK
+tingkat 5: 1105072002001 OK
+suara (chart): {'null': None, '100025': 121, '100026': 15, '100027': 0}
+tersimpan: scan_c1/sirekap-1105072002001-1.jpg (752 KB)
+tersimpan: scan_c1/sirekap-1105072002001-2.jpg (701 KB)
+tersimpan: scan_c1/sirekap-1105072002001-3.jpg (586 KB)

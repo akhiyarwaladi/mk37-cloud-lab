@@ -9,6 +9,7 @@
 python3 --version
 
 # ---- Langkah 6.2: perbarui paket dan pasang python3-venv, pip, curl ----
+cloud-init status --wait   # tunggu boot selesai agar apt tidak terkunci
 sudo apt update
 sudo apt install -y python3-venv python3-pip curl
 
