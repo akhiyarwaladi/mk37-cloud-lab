@@ -17,4 +17,5 @@ Kode untuk modul Pertemuan 4: integrasi instans EC2 (Pertemuan 3) dengan bucket 
 | `kualitas_udara_v1.py` | Versi minimum kualitas_udara (Tugas tambahan): lihat data mentah PM2.5. |
 | `presign_url.sh` | Membuat presigned URL bermasa berlaku 10 menit (Langkah 5). |
 | `siap_selenium.sh` | Siapkan Chromium dan pustaka Selenium di EC2 (Langkah 4). |
+| `siap_selenium_windows.ps1` | Padanan setup Selenium di Windows PowerShell (Langkah 4). |
 | `unggah_galeri.sh` | Sinkronisasi sampul/ dan bukti/ ke dua prefix S3 dan verifikasi jumlah (Langkah 4). |
