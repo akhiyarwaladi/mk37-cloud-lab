@@ -21,6 +21,7 @@ Kode untuk modul Pertemuan 4: integrasi instans EC2 (Pertemuan 3) dengan bucket 
 | `contoh_keluaran/galeri_v1.txt` | Keluaran tangga 1 (judul tab, 20 kartu). |
 | `contoh_keluaran/galeri_v2.txt` | Keluaran tangga 2 (5 judul). |
 | `contoh_keluaran/galeri_v3.txt` | Keluaran tangga 3 (20+20 kartu, 2 bukti). |
+| `contoh_keluaran/kirim_s3.txt` | Keluaran kirim_s3.py (satu sampul terkirim). |
 | `daftar_v1.py` | Bedah 1 daftar_artikel: hitung semua tautan kanal Kompas. |
 | `daftar_v2.py` | Bedah 2 daftar_artikel: saring perulangan 5 URL artikel. |
 | `daftar_v3.py` | Bedah 3 daftar_artikel: sorot kartu dan potret bukti. |
@@ -28,6 +29,7 @@ Kode untuk modul Pertemuan 4: integrasi instans EC2 (Pertemuan 3) dengan bucket 
 | `galeri_sampul_v1.py` | Tangga 1 galeri (Langkah 4): buka halaman dan hitung kartu. |
 | `galeri_sampul_v2.py` | Tangga 2 galeri (Langkah 4): tambah perulangan for, baca 5 judul. |
 | `galeri_sampul_v3.py` | Tangga 3 galeri (Langkah 4): tambah klik next dan potret bukti. |
+| `kirim_s3.py` | Kirim satu sampul + JSON dari Python via boto3 (Langkah 4). |
 | `presign_url.sh` | Membuat presigned URL bermasa berlaku 10 menit (Langkah 5). |
 | `siap_selenium.sh` | Siapkan Chromium dan pustaka Selenium di EC2 (Langkah 4). |
 | `siap_selenium_windows.ps1` | Padanan setup Selenium di Windows PowerShell (Langkah 4). |
