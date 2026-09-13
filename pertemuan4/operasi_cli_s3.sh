@@ -12,9 +12,16 @@ aws sts get-caller-identity
 # 2. Daftar bucket di akun ini
 aws s3 ls
 
+# ---- Buat bucket bila belum ada (atasi NoSuchBucket) ----
+# Buat bucket bila belum ada (ganti dengan nama bucket Anda)
+aws s3 mb s3://mk37-namaanda-angkaunik --region ap-southeast-1
+
+# Pastikan bucket kini terdaftar
+aws s3 ls
+
 # ---- Roundtrip unggah, lihat, unduh, verifikasi identik ----
 # 3. Unggah berkas (key = laporan/ec2-laporan.txt)
-echo "Laporan cuaca dari EC2 - $(date)" > laporan.txt
+echo "Catatan praktikum S3 dari EC2 - $(date)" > laporan.txt
 aws s3 cp laporan.txt s3://mk37-namaanda-angkaunik/laporan/ec2-laporan.txt
 
 # 4. Lihat isi bucket dan prefix

@@ -1,0 +1,4 @@
+Buku ditemukan : 40
+Diunduh baru   : 40
+Folder sampul   : sampul/ (40 berkas)
+Folder bukti    : bukti/ (2 berkas)
