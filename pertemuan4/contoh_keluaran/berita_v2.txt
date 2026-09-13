@@ -1,0 +1,4 @@
+Daftar kanal: 3
+- news       https://news.detik.com/  => detikNews - Berita hari ini di Indonesia dan Internasio
+- sepakbola  https://sport.detik.com/sepakbola  => Berita Sepakbola Terbaru Nasional dan Internasional
+- seleb      https://hot.detik.com/  => detikHOT | Berita, Foto, dan Video TerHOT dari Dunia Hi

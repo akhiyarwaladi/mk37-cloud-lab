@@ -1,0 +1,4 @@
+Halaman 1: 20 kartu
+Halaman 2: 20 kartu
+Sampul pertama: https://books.toscrape.com/media/cache/5d/72/5d72709c6a7a9584a4d1cf07648bfce1.jpg
+Bukti: bukti_halaman1.png + bukti_halaman2.png

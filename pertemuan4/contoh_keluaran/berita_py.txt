@@ -1,0 +1,6 @@
+Kanal news      : 3 berita
+Kanal sepakbola : 3 berita
+Kanal seleb     : 3 berita
+Total          : 9 berita (lewat: 0)
+JSON           : berita.json
+Folder gambar  : img/ (9 berkas)
