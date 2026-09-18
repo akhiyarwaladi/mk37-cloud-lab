@@ -1,17 +1,22 @@
 # Pertemuan 5 - OCR C1 KPU
 
-Kode untuk modul Pertemuan 4: integrasi instans EC2 (Pertemuan 3) dengan bucket Amazon S3.
+Kode untuk modul Pertemuan 5: pipeline OCR formulir C1 KPU (unduh terotomasi, arsip S3, RDS MySQL, model AI, cron). Ikuti berkas `_v1`, `_v2` sebelum versi lengkapnya.
 
 | Berkas | Keterangan |
 |---|---|
 | `contoh_keluaran/simpan_contoh.txt` | Keluaran normal simpan_contoh.py. |
 | `contoh_keluaran/sirekap_tps.txt` | Keluaran unduh_sirekap.py untuk TPS contoh (hierarki, chart, tiga berkas). |
-| `ocr_c1.py` | Kirim gambar C1 ke model AI (OpenAI-compatible); ada mode --simulasi. |
-| `pipeline_c1.py` | Pipeline penuh: proses semua gambar scan_c1 lalu simpan ke RDS. |
+| `ocr_c1.py` | Versi lengkap OCR (Langkah 5): prompt JSON, parsing jawaban, mode --simulasi, fungsi kirim_ocr(). |
+| `ocr_c1_v1.py` | Tangga 1 OCR (Langkah 5): uji jalur API dengan pesan teks saja. |
+| `ocr_c1_v2.py` | Tangga 2 OCR (Langkah 5): kirim satu gambar base64, jawaban mentah. |
+| `pipeline_c1.py` | Versi lengkap pipeline (Langkah 7): OCR nyata, galat per berkas ditangkap, hitungan berhasil. |
+| `pipeline_c1_v1.py` | Tangga 1 pipeline (Langkah 7): loop seluruh scan_c1 dengan OCR tiruan, tanpa kunci AI. |
 | `simpan_contoh.py` | Contoh pemakaian: satu hasil simulasi disimpan ke RDS. |
-| `simpan_rds.py` | Skema tabel hasil_ocr, simpan idempoten (upsert), mode --dry. |
-| `simpan_rds_v1.py` | Versi skema simpan_rds.py (Langkah 4): sambung dan buat tabel, mode --dry. |
-| `unduh_c1.py` | Pengunduh formulir C1 dari arsip terbuka kawalc1 (idempoten, ada jeda). |
-| `unduh_c1_v1.py` | Versi minimum unduh_c1.py (Langkah 1): satu berkas untuk menguji jalur unduh. |
-| `unduh_sirekap.py` | Pengunduh foto C1 resmi Sirekap dari kode wilayah (cermin uji, idempoten, ada jeda). |
-| `unduh_sirekap_v1.py` | Versi minimum Sirekap (Langkah 1): dua pertanyaan untuk membuktikan host dan bentuk data. |
+| `simpan_rds.py` | Versi lengkap RDS (Langkah 4): tambah simpan() upsert idempoten di atas fondasi yang sama. |
+| `simpan_rds_v1.py` | Tangga 1 RDS (Langkah 4): skema tabel hasil_ocr, sambung, buat tabel, mode --dry. |
+| `unduh_c1.py` | Versi lengkap unduh (Langkah 1): lewati bila sudah ada (idempoten) dan jeda sopan antar unduhan. |
+| `unduh_c1_v1.py` | Tangga 1 unduh (Langkah 1): satu berkas untuk menguji jalur unduh. |
+| `unduh_c1_v2.py` | Tangga 2 unduh (Langkah 1): perulangan kamus DAFTAR, tiga berkas, belum ada lewati. |
+| `unduh_sirekap.py` | Versi lengkap Sirekap (Langkah 1): validasi tiap tingkat kode wilayah dan unduh semua foto (idempoten). |
+| `unduh_sirekap_v1.py` | Tangga 1 Sirekap (Langkah 1): dua pertanyaan untuk membuktikan host dan bentuk data. |
+| `unduh_sirekap_v2.py` | Tangga 2 Sirekap (Langkah 1): unduh satu foto pertama dari larik images. |
