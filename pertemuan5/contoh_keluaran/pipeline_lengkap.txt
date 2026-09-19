@@ -1,0 +1,9 @@
+database mk37c1 dan tabel hasil_ocr siap
+suara resmi (chart): {'null': None, '100025': 121, '100026': 15, '100027': 0}
+terarsip: c1/sirekap/1105072002001/sirekap-1105072002001-1.jpg
+tersimpan di RDS: sirekap-1105072002001-1.jpg
+terarsip: c1/sirekap/1105072002001/sirekap-1105072002001-2.jpg
+tersimpan di RDS: sirekap-1105072002001-2.jpg
+terarsip: c1/sirekap/1105072002001/sirekap-1105072002001-3.jpg
+tersimpan di RDS: sirekap-1105072002001-3.jpg
+Pipeline utuh selesai: 3 formulir tuntas.

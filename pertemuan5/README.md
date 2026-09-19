@@ -5,6 +5,7 @@ Kode untuk modul Pertemuan 5: pipeline OCR formulir C1 KPU (unduh terotomasi, ar
 | Berkas | Keterangan |
 |---|---|
 | `contoh_keluaran/kirim_s3.txt` | Keluaran kirim_s3.py: pasangan terunduh -> langsung terunggah per berkas, diakhiri verifikasi enam objek terstruktur. |
+| `contoh_keluaran/pipeline_lengkap.txt` | Keluaran pipeline_lengkap.py --simulasi: chart resmi, empat tahap per foto, rekap tuntas. |
 | `contoh_keluaran/rds_isi_tabel.txt` | Keluaran query_rds.py setelah simpan_contoh dijalankan dua kali (satu baris). |
 | `contoh_keluaran/simpan_contoh.txt` | Keluaran normal simpan_contoh.py. |
 | `contoh_keluaran/sirekap_tps.txt` | Keluaran unduh_sirekap.py untuk TPS contoh (hierarki, chart, tiga berkas). |
@@ -14,8 +15,10 @@ Kode untuk modul Pertemuan 5: pipeline OCR formulir C1 KPU (unduh terotomasi, ar
 | `ocr_c1.py` | Versi lengkap OCR (Langkah 5): prompt JSON, parsing jawaban, mode --simulasi, fungsi kirim_ocr(). |
 | `ocr_c1_v1.py` | Tangga 1 OCR (Langkah 5): uji jalur API dengan pesan teks saja. |
 | `ocr_c1_v2.py` | Tangga 2 OCR (Langkah 5): kirim satu gambar base64, jawaban mentah. |
-| `pipeline_c1.py` | Versi lengkap pipeline (Langkah 7): OCR nyata, galat per berkas ditangkap, hitungan berhasil. |
+| `pipeline_c1.py` | Tangga 2 pipeline (Langkah 7): OCR nyata + simpan RDS per berkas dari folder lokal. |
 | `pipeline_c1_v1.py` | Tangga 1 pipeline (Langkah 7): loop seluruh scan_c1 dengan OCR tiruan, tanpa kunci AI. |
+| `pipeline_lengkap.py` | Tugas akhir (Langkah 8): pipeline utuh satu loop, unduh KPU -> arsip S3 -> ekstraksi AI -> simpan RDS; ada mode --simulasi. |
+| `pipeline_lengkap_v1.py` | Tugas akhir tangga 1 (Langkah 8): unduh foto dari URL KPU lalu LANGSUNG arsip S3, tanpa OCR/RDS. |
 | `query_rds.py` | Periksa isi tabel hasil_ocr: SELECT dan cetak semua baris. |
 | `simpan_contoh.py` | Contoh pemakaian: siapkan_tabel() dulu, satu hasil simulasi disimpan ke RDS. |
 | `simpan_rds.py` | Versi lengkap RDS (Langkah 4): tambah sambung() dan simpan() upsert idempoten. |
