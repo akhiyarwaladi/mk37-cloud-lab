@@ -1,17 +1,17 @@
-import os
 import sys
 import time
 from pathlib import Path
 import boto3
 import requests
 from ocr_c1 import kirim_ocr, simulasi
-from simpan_rds import siapkan_tabel, simpan
+from simpan_rds import siapkan_tabel, simpan, RDS_HOST, RDS_PASSWORD
 
-# ====== KONFIGURASI (kunci IAM Anda, Pertemuan 4) ======
-AWS_ACCESS_KEY_ID = "AKIAXXXXXXXXXXXXXXXX"
-AWS_SECRET_ACCESS_KEY = "ISI_SECRET_KEY_ANDA"
+# ====== KONFIGURASI (kunci kelas, Pertemuan 4) ======
+AWS_ACCESS_KEY_ID = ""
+AWS_SECRET_ACCESS_KEY = (""
+                         "")
 S3_REGION = "ap-southeast-1"
-NAMA_BUCKET = "mk37-namaanda-angkaunik"
+NAMA_BUCKET = ""
 PROV = "11"            # Aceh
 KAB = "1105"           # Aceh Barat
 KEC = "110507"         # Arongan Lambalek
@@ -19,21 +19,24 @@ KEL = "1105072002"     # Alue Bagok
 TPS = "1105072002001"  # TPS 001
 # =======================================================
 
-BASIS = "https://uji-sirekap-obj-data.kpu.go.id/json-public-prod"
+BASIS = ("https://uji-sirekap-obj-data.kpu.go.id"
+         "/json-public-prod")
 FOLDER = Path(__file__).resolve().parent / "scan_c1"
 FOLDER.mkdir(parents=True, exist_ok=True)
 S3 = boto3.client("s3", region_name=S3_REGION,
                   aws_access_key_id=AWS_ACCESS_KEY_ID,
                   aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
 
+KEPALA = {"User-Agent": "mk37-kelas/1.0"}
+
 def ambil_json(url):
-    respon = requests.get(url, timeout=30,
-                          headers={"User-Agent": "mk37-kelas/1.0"})
+    respon = requests.get(url, timeout=30, headers=KEPALA)
     respon.raise_for_status()
     return respon.json()
 
-if not os.environ.get("RDS_HOST") or not os.environ.get("RDS_PASSWORD"):
-    sys.exit("Atur RDS_HOST dan RDS_PASSWORD dulu (Langkah 4).")
+if not RDS_HOST or not RDS_PASSWORD:
+    sys.exit("Isi RDS_HOST dan RDS_PASSWORD "
+             "pada simpan_rds.py dulu.")
 siapkan_tabel()                      # CREATE TABLE dulu
 
 data = ambil_json(f"{BASIS}/pemilu/hhcw/ppwp/{PROV}/{KAB}"

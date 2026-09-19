@@ -2,11 +2,12 @@ import boto3
 import sys
 from pathlib import Path
 
-# ====== KONFIGURASI (kunci IAM Anda, Pertemuan 4) ======
-AWS_ACCESS_KEY_ID = "AKIAXXXXXXXXXXXXXXXX"  # Access key ID
-AWS_SECRET_ACCESS_KEY = "ISI_SECRET_KEY_ANDA"  # Secret access key
+# ====== KONFIGURASI (kunci kelas, Pertemuan 4) ======
+AWS_ACCESS_KEY_ID = ""
+AWS_SECRET_ACCESS_KEY = (""
+                         "")
 S3_REGION = "ap-southeast-1"
-NAMA_BUCKET = "mk37-namaanda-angkaunik"  # nama bucket Anda
+NAMA_BUCKET = ""
 # ==================================================
 
 s3 = boto3.client("s3", region_name=S3_REGION,

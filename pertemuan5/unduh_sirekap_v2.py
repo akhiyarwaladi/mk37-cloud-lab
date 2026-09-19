@@ -4,7 +4,8 @@ from pathlib import Path
 # ====== KONFIGURASI ======
 TPS = "1105072002001"  # TPS 001 Alue Bagok (kode memuat hierarkinya)
 # =========================
-BASIS = "https://uji-sirekap-obj-data.kpu.go.id/json-public-prod"
+BASIS = ("https://uji-sirekap-obj-data.kpu.go.id"
+         "/json-public-prod")
 FOLDER = Path("scan_c1")
 FOLDER.mkdir(exist_ok=True)
 

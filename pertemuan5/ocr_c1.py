@@ -1,15 +1,14 @@
 import base64
 import json
-import os
 import sys
 from pathlib import Path
 import requests
 
-# ====== KONFIGURASI (environment variable) ======
-BASE_URL = os.environ.get("OPENCODE_BASE_URL", "")
-API_KEY = os.environ.get("OPENCODE_API_KEY", "")
-MODEL = os.environ.get("OPENCODE_MODEL", "xiaomi-mimo-2.5")
-# ================================================
+# ====== KONFIGURASI ======
+BASE_URL = "https://tokenharbor.ai/v1"
+API_KEY = ""              # isi API key kelas di sini
+MODEL = "mimo-v2.5"
+# ========================
 
 PROMPT = """Baca formulir C1 pada gambar ini dan ekstrak angkanya.
 Jawab HANYA JSON valid tanpa penjelasan tambahan, dengan bentuk:
@@ -19,8 +18,8 @@ Isi 0 bila ada angka yang tidak terbaca."""
 
 def kirim_ocr(path_gambar):
     """Kirim satu gambar C1, kembalikan hasil ekstraksi sebagai dict."""
-    if not BASE_URL or not API_KEY:
-        sys.exit("Atur OPENCODE_BASE_URL dan OPENCODE_API_KEY dulu, "
+    if not API_KEY:
+        sys.exit("Isi API_KEY pada blok KONFIGURASI dulu, "
                  "atau jalankan dengan --simulasi.")
     path = Path(path_gambar)
     if not path.exists():

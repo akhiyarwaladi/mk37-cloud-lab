@@ -3,11 +3,12 @@ import time
 from pathlib import Path
 import requests
 
-# ====== KONFIGURASI (kunci IAM Anda, Pertemuan 4) ======
-AWS_ACCESS_KEY_ID = "AKIAXXXXXXXXXXXXXXXX"  # Access key ID
-AWS_SECRET_ACCESS_KEY = "ISI_SECRET_KEY_ANDA"  # Secret access key
+# ====== KONFIGURASI (kunci kelas, Pertemuan 4) ======
+AWS_ACCESS_KEY_ID = ""
+AWS_SECRET_ACCESS_KEY = (""
+                         "")
 S3_REGION = "ap-southeast-1"
-NAMA_BUCKET = "mk37-namaanda-angkaunik"  # nama bucket Anda
+NAMA_BUCKET = ""
 KODE_TPS = "1105072002001"  # TPS foto Sirekap Anda
 # ==================================================
 

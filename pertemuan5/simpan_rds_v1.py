@@ -1,14 +1,13 @@
-import os
 import sys
 import pymysql
 
-# ====== KONFIGURASI (environment variable) ======
-RDS_HOST = os.environ.get("RDS_HOST", "")
-RDS_PORT = int(os.environ.get("RDS_PORT", "3306"))
-RDS_USER = os.environ.get("RDS_USER", "admin")
-RDS_PASSWORD = os.environ.get("RDS_PASSWORD", "")
-RDS_DB = os.environ.get("RDS_DB", "mk37c1")
-# ================================================
+# ====== KONFIGURASI (isi sesuai RDS Anda, Langkah 3) ======
+RDS_HOST = ""      # endpoint RDS Anda (Langkah 3)
+RDS_PORT = 3306
+RDS_USER = "admin"
+RDS_PASSWORD = ""   # kata sandi master Anda
+RDS_DB = "mk37c1"
+# =========================================================
 
 BUAT_TABEL = """CREATE TABLE IF NOT EXISTS hasil_ocr (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -39,5 +38,5 @@ if __name__ == "__main__":
         print("DRY - SQL yang akan dijalankan:\n", BUAT_TABEL)
         sys.exit()
     if not RDS_HOST or not RDS_PASSWORD:
-        sys.exit("Atur RDS_HOST dan RDS_PASSWORD dulu.")
+        sys.exit("Isi RDS_HOST dan RDS_PASSWORD pada blok KONFIGURASI dulu.")
     siapkan_tabel()

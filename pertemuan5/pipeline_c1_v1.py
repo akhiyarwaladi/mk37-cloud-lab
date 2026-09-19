@@ -8,7 +8,8 @@ from simpan_rds import siapkan_tabel, simpan, RDS_HOST, RDS_PASSWORD
 FOLDER = Path(__file__).resolve().parent / "scan_c1"
 
 if not RDS_HOST or not RDS_PASSWORD:
-    sys.exit("Atur RDS_HOST dan RDS_PASSWORD dulu (Langkah 4).")
+    sys.exit("Isi RDS_HOST dan RDS_PASSWORD "
+             "pada simpan_rds.py dulu.")
 if not FOLDER.exists():
     sys.exit("Folder scan_c1 tidak ada; jalankan unduh_c1.py dulu.")
 

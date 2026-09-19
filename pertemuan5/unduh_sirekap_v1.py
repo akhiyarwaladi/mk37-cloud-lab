@@ -3,7 +3,8 @@ import requests
 # ====== KONFIGURASI ======
 TPS = "1105072002001"  # TPS 001 Alue Bagok (kode memuat hierarkinya)
 # =========================
-BASIS = "https://uji-sirekap-obj-data.kpu.go.id/json-public-prod"
+BASIS = ("https://uji-sirekap-obj-data.kpu.go.id"
+         "/json-public-prod")
 
 def ambil_json(url):
     respon = requests.get(url, timeout=30,

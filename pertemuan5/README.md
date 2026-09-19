@@ -1,6 +1,6 @@
 # Pertemuan 5 - OCR C1 KPU
 
-Kode untuk modul Pertemuan 5: pipeline OCR formulir C1 KPU (unduh terotomasi, arsip S3, RDS MySQL, model AI, cron). Ikuti berkas `_v1`, `_v2` sebelum versi lengkapnya.
+Kode untuk modul Pertemuan 5: pipeline OCR formulir C1 KPU (unduh terotomasi, arsip S3, RDS MySQL, model AI, cron). Ikuti berkas `_v1`, `_v2` sebelum versi lengkapnya. Kunci akses kelas disensor kosong pada repo ini.
 
 | Berkas | Keterangan |
 |---|---|
