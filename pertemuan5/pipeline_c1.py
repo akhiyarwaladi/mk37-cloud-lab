@@ -10,7 +10,7 @@ FOLDER = Path(__file__).resolve().parent / "scan_c1"
 if not FOLDER.exists():
     sys.exit("Folder scan_c1 tidak ada; jalankan unduh_c1.py dulu.")
 
-siapkan_tabel()             # CREATE TABLE dulu: database + tabel siap
+siapkan_tabel()             # CREATE TABLE dulu
 berhasil = 0
 for gambar in sorted(FOLDER.iterdir()):
     print("memproses:", gambar.name)

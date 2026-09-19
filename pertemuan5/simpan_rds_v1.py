@@ -2,10 +2,10 @@ import sys
 import pymysql
 
 # ====== KONFIGURASI (isi sesuai RDS Anda, Langkah 3) ======
-RDS_HOST = ""      # endpoint RDS Anda (Langkah 3)
+RDS_HOST = ""         # endpoint RDS Anda (Langkah 3)
 RDS_PORT = 3306
 RDS_USER = "admin"
-RDS_PASSWORD = ""   # kata sandi master Anda
+RDS_PASSWORD = ""     # kata sandi master Anda
 RDS_DB = "mk37c1"
 # =========================================================
 
@@ -25,7 +25,7 @@ def siapkan_tabel():
                          user=RDS_USER, password=RDS_PASSWORD)
     try:
         with kn.cursor() as ks:
-            ks.execute(f"CREATE DATABASE IF NOT EXISTS {RDS_DB}")
+            ks.execute("CREATE DATABASE IF NOT EXISTS " + RDS_DB)
             ks.execute(f"USE {RDS_DB}")
             ks.execute(BUAT_TABEL)
         kn.commit()
@@ -38,5 +38,6 @@ if __name__ == "__main__":
         print("DRY - SQL yang akan dijalankan:\n", BUAT_TABEL)
         sys.exit()
     if not RDS_HOST or not RDS_PASSWORD:
-        sys.exit("Isi RDS_HOST dan RDS_PASSWORD pada blok KONFIGURASI dulu.")
+        sys.exit("Isi RDS_HOST dan RDS_PASSWORD "
+                 "pada blok KONFIGURASI dulu.")
     siapkan_tabel()

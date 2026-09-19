@@ -4,15 +4,16 @@ from pathlib import Path
 import requests
 
 # ====== KONFIGURASI ======
-BASE_URL = "https://tokenharbor.ai/v1"
-API_KEY = ""              # isi API key kelas di sini
-MODEL = "mimo-v2.5"
+BASE_URL = "https://openrouter.ai/api/v1"
+API_KEY = ""              # API key OpenRouter milik Anda
+MODEL = "google/gemma-4-31b-it:free"  # gratis, cek katalog
 # ========================
 
 if not API_KEY:
     sys.exit("Isi API_KEY pada blok KONFIGURASI dulu.")
-GAMBAR = sys.argv[1] if len(sys.argv) > 1 else (
-    "scan_c1/c1-plano.jpeg")
+GAMBAR = "scan_c1/c1-plano.jpeg"
+if len(sys.argv) > 1:
+    GAMBAR = sys.argv[1]
 path = Path(GAMBAR)
 if not path.exists():
     sys.exit(f"Berkas {GAMBAR} tidak ada; "

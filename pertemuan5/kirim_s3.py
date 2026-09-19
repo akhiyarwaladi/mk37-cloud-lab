@@ -44,6 +44,7 @@ for nama, url, kunci in DAFTAR:
     s3.upload_file(str(tujuan), NAMA_BUCKET, kunci)
     print("langsung terunggah:", kunci)
 
+# Foto Sirekap dari Langkah 1: arsipkan ke prefix kode TPS.
 for foto in sorted(FOLDER.glob("sirekap-*.jpg")):
     kunci = f"c1/sirekap/{KODE_TPS}/{foto.name}"
     s3.upload_file(str(foto), NAMA_BUCKET, kunci)

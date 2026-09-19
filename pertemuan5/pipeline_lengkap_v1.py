@@ -39,10 +39,8 @@ for urutan, url_foto in enumerate(data.get("images", []), 1):
     nama = f"sirekap-{TPS}-{urutan}.jpg"
     tujuan = FOLDER / nama
     if not tujuan.exists():          # 1) unduh bila belum ada
-        kepala = {"User-Agent": "mk37-kelas/1.0"}
-        biner = requests.get(url_foto, timeout=60,
-                             headers=kepala).content
-        tujuan.write_bytes(biner)
+        unduhan = requests.get(url_foto, timeout=60, headers=KEPALA)
+        tujuan.write_bytes(unduhan.content)
         print("terunduh:", nama)
         time.sleep(1)                # sopan pada sumber KPU
     kunci_s3 = f"c1/sirekap/{TPS}/{nama}"

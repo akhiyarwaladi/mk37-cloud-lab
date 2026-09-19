@@ -5,9 +5,9 @@ from pathlib import Path
 import requests
 
 # ====== KONFIGURASI ======
-BASE_URL = "https://tokenharbor.ai/v1"
-API_KEY = ""              # isi API key kelas di sini
-MODEL = "mimo-v2.5"
+BASE_URL = "https://openrouter.ai/api/v1"
+API_KEY = ""              # API key OpenRouter milik Anda
+MODEL = "google/gemma-4-31b-it:free"  # gratis, cek katalog
 # ========================
 
 PROMPT = """Baca formulir C1 pada gambar ini dan ekstrak angkanya.
@@ -40,6 +40,7 @@ def kirim_ocr(path_gambar):
         json=isi, timeout=120)
     respon.raise_for_status()
     teks = respon.json()["choices"][0]["message"]["content"].strip()
+    # buang pembungkus json bila model menambahkannya
     teks = teks.removeprefix("```json").removesuffix("```").strip()
     return json.loads(teks)
 
@@ -51,7 +52,8 @@ def simulasi():
             "catatan": "hasil tiruan untuk uji pipeline"}
 
 if __name__ == "__main__":
-    arg = sys.argv[1] if len(sys.argv) > 1 else ""
-    gambar = arg if arg and not arg.startswith("--") else "scan_c1/c1-plano.jpeg"
+    gambar = "scan_c1/c1-plano.jpeg"
+    if len(sys.argv) > 1 and not sys.argv[1].startswith("--"):
+        gambar = sys.argv[1]
     hasil = simulasi() if "--simulasi" in sys.argv else kirim_ocr(gambar)
     print(json.dumps(hasil, ensure_ascii=False, indent=2))

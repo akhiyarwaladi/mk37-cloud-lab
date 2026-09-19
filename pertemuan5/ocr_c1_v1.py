@@ -2,9 +2,9 @@ import sys
 import requests
 
 # ====== KONFIGURASI ======
-BASE_URL = "https://tokenharbor.ai/v1"
-API_KEY = ""              # isi API key kelas di sini
-MODEL = "mimo-v2.5"
+BASE_URL = "https://openrouter.ai/api/v1"
+API_KEY = ""              # API key OpenRouter milik Anda
+MODEL = "google/gemma-4-31b-it:free"  # gratis, cek katalog
 # ========================
 
 if not API_KEY:
