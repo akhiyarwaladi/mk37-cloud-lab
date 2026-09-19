@@ -4,10 +4,13 @@ Kode untuk modul Pertemuan 5: pipeline OCR formulir C1 KPU (unduh terotomasi, ar
 
 | Berkas | Keterangan |
 |---|---|
+| `contoh_keluaran/kirim_s3.txt` | Keluaran kirim_s3.py: pasangan terunduh -> langsung terunggah per berkas, diakhiri verifikasi enam objek terstruktur. |
 | `contoh_keluaran/rds_isi_tabel.txt` | Keluaran query_rds.py setelah simpan_contoh dijalankan dua kali (satu baris). |
-| `contoh_keluaran/s3_terstruktur.txt` | Keluaran aws s3 ls --recursive: enam objek pada dua prefix terstruktur. |
 | `contoh_keluaran/simpan_contoh.txt` | Keluaran normal simpan_contoh.py. |
 | `contoh_keluaran/sirekap_tps.txt` | Keluaran unduh_sirekap.py untuk TPS contoh (hierarki, chart, tiga berkas). |
+| `kirim_s3.py` | Versi lengkap S3 (Langkah 2): unduh bila perlu lalu LANGSUNG unggah per berkas (streaming boto3), kawalc1 + Sirekap, verifikasi list_objects_v2. |
+| `kirim_s3_v1.py` | Tangga 1 S3 (Langkah 2): klien boto3 dengan Access key ID + Secret, uji head_bucket. |
+| `kirim_s3_v2.py` | Tangga 2 S3 (Langkah 2): unggah satu berkas dengan upload_file ke prefix terstruktur lalu verifikasi head_object. |
 | `ocr_c1.py` | Versi lengkap OCR (Langkah 5): prompt JSON, parsing jawaban, mode --simulasi, fungsi kirim_ocr(). |
 | `ocr_c1_v1.py` | Tangga 1 OCR (Langkah 5): uji jalur API dengan pesan teks saja. |
 | `ocr_c1_v2.py` | Tangga 2 OCR (Langkah 5): kirim satu gambar base64, jawaban mentah. |
