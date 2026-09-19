@@ -20,20 +20,19 @@ BUAT_TABEL = """CREATE TABLE IF NOT EXISTS hasil_ocr (
     model VARCHAR(100),
     waktu_ocr DATETIME)"""
 
-def sambung():
-    return pymysql.connect(host=RDS_HOST, port=RDS_PORT,
-                           user=RDS_USER, password=RDS_PASSWORD,
-                           database=RDS_DB)
-
 def siapkan_tabel():
-    kn = sambung()
+    """Buat database dan tabel bila belum ada; aman diulang."""
+    kn = pymysql.connect(host=RDS_HOST, port=RDS_PORT,
+                         user=RDS_USER, password=RDS_PASSWORD)
     try:
         with kn.cursor() as ks:
+            ks.execute(f"CREATE DATABASE IF NOT EXISTS {RDS_DB}")
+            ks.execute(f"USE {RDS_DB}")
             ks.execute(BUAT_TABEL)
         kn.commit()
     finally:
         kn.close()
-    print("tabel hasil_ocr siap di", RDS_DB)
+    print("database", RDS_DB, "dan tabel hasil_ocr siap")
 
 if __name__ == "__main__":
     if "--dry" in sys.argv:              # uji tanpa database

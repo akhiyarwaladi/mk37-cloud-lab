@@ -1,0 +1,1 @@
+('c1-plano.jpeg', '036', 203, 8, 'simulasi')

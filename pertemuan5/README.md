@@ -4,6 +4,8 @@ Kode untuk modul Pertemuan 5: pipeline OCR formulir C1 KPU (unduh terotomasi, ar
 
 | Berkas | Keterangan |
 |---|---|
+| `contoh_keluaran/rds_isi_tabel.txt` | Keluaran query_rds.py setelah simpan_contoh dijalankan dua kali (satu baris). |
+| `contoh_keluaran/s3_terstruktur.txt` | Keluaran aws s3 ls --recursive: enam objek pada dua prefix terstruktur. |
 | `contoh_keluaran/simpan_contoh.txt` | Keluaran normal simpan_contoh.py. |
 | `contoh_keluaran/sirekap_tps.txt` | Keluaran unduh_sirekap.py untuk TPS contoh (hierarki, chart, tiga berkas). |
 | `ocr_c1.py` | Versi lengkap OCR (Langkah 5): prompt JSON, parsing jawaban, mode --simulasi, fungsi kirim_ocr(). |
@@ -11,9 +13,10 @@ Kode untuk modul Pertemuan 5: pipeline OCR formulir C1 KPU (unduh terotomasi, ar
 | `ocr_c1_v2.py` | Tangga 2 OCR (Langkah 5): kirim satu gambar base64, jawaban mentah. |
 | `pipeline_c1.py` | Versi lengkap pipeline (Langkah 7): OCR nyata, galat per berkas ditangkap, hitungan berhasil. |
 | `pipeline_c1_v1.py` | Tangga 1 pipeline (Langkah 7): loop seluruh scan_c1 dengan OCR tiruan, tanpa kunci AI. |
-| `simpan_contoh.py` | Contoh pemakaian: satu hasil simulasi disimpan ke RDS. |
-| `simpan_rds.py` | Versi lengkap RDS (Langkah 4): tambah simpan() upsert idempoten di atas fondasi yang sama. |
-| `simpan_rds_v1.py` | Tangga 1 RDS (Langkah 4): skema tabel hasil_ocr, sambung, buat tabel, mode --dry. |
+| `query_rds.py` | Periksa isi tabel hasil_ocr: SELECT dan cetak semua baris. |
+| `simpan_contoh.py` | Contoh pemakaian: siapkan_tabel() dulu, satu hasil simulasi disimpan ke RDS. |
+| `simpan_rds.py` | Versi lengkap RDS (Langkah 4): tambah sambung() dan simpan() upsert idempoten. |
+| `simpan_rds_v1.py` | Tangga 1 RDS (Langkah 4): buat database lalu tabel (IF NOT EXISTS), mode --dry. |
 | `unduh_c1.py` | Versi lengkap unduh (Langkah 1): lewati bila sudah ada (idempoten) dan jeda sopan antar unduhan. |
 | `unduh_c1_v1.py` | Tangga 1 unduh (Langkah 1): satu berkas untuk menguji jalur unduh. |
 | `unduh_c1_v2.py` | Tangga 2 unduh (Langkah 1): perulangan kamus DAFTAR, tiga berkas, belum ada lewati. |
