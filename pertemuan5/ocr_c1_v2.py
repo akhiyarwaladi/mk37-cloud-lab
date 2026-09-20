@@ -36,4 +36,5 @@ respon = requests.post(
           "reasoning": {"enabled": False}},
     timeout=120)
 respon.raise_for_status()
-print(respon.json()["choices"][0]["message"]["content"].strip())
+pesan = respon.json()["choices"][0]["message"]
+print(pesan["content"].strip())

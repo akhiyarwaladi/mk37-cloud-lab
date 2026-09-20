@@ -10,7 +10,7 @@ API_KEY = ""
 MODEL = "inclusionai/ling-3.0-flash-vl:free"
 # ========================
 
-PROMPT = """Baca formulir C1 pada gambar ini dan ekstrak angkanya.
+PROMPT = """Baca formulir C1 dan ekstrak angkanya.
 Jawab HANYA JSON valid tanpa penjelasan tambahan, dengan bentuk:
 {"nama_formulir": "...", "tps": "...", "jumlah_sah": 0,
  "jumlah_tidak_sah": 0, "catatan": "..."}
@@ -18,13 +18,14 @@ Isi null bila angka tidak terlihat atau tidak terbaca.
 Jangan menebak; jelaskan keterbatasan pada catatan."""
 
 def kirim_ocr(path_gambar):
-    """Kirim satu gambar C1, kembalikan hasil ekstraksi sebagai dict."""
+    """Kirim gambar C1 dan kembalikan dictionary."""
     if not API_KEY:
         sys.exit("Isi API_KEY pada blok KONFIGURASI dulu, "
                  "atau jalankan dengan --simulasi.")
     path = Path(path_gambar)
     if not path.exists():
-        sys.exit(f"Berkas {path_gambar} tidak ada; jalankan unduh_c1.py dulu.")
+        sys.exit(f"Berkas {path_gambar} tidak ada; "
+                 "jalankan unduh_c1.py dulu.")
     data = base64.b64encode(path.read_bytes()).decode()
     isi = {
         "model": MODEL,
@@ -71,5 +72,8 @@ if __name__ == "__main__":
     gambar = "scan_c1/c1-plano.jpeg"
     if len(sys.argv) > 1 and not sys.argv[1].startswith("--"):
         gambar = sys.argv[1]
-    hasil = simulasi() if "--simulasi" in sys.argv else kirim_ocr(gambar)
+    if "--simulasi" in sys.argv:
+        hasil = simulasi()
+    else:
+        hasil = kirim_ocr(gambar)
     print(json.dumps(hasil, ensure_ascii=False, indent=2))
