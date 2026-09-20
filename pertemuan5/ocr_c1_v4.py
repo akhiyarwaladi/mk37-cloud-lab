@@ -1,4 +1,5 @@
 import base64
+import json
 import sys
 from pathlib import Path
 import requests
@@ -26,8 +27,10 @@ respon = requests.post(
     json={"model": MODEL,
           "messages": [{"role": "user", "content": [
               {"type": "text",
-               "text": "Apa isi gambar ini? "
-                       "Jawab dalam dua kalimat."},
+               "text": "Jawab HANYA JSON: nama_formulir, "
+                       "tps, jumlah_sah, jumlah_tidak_sah, "
+                       "catatan. Angka tidak terbaca: null. "
+                       "Jangan menebak."},
               {"type": "image_url",
                "image_url": {"url": "data:image/jpeg;base64,"
                              + data}},
@@ -36,4 +39,12 @@ respon = requests.post(
           "reasoning": {"enabled": False}},
     timeout=120)
 respon.raise_for_status()
-print(respon.json()["choices"][0]["message"]["content"].strip())
+pesan = respon.json()["choices"][0]["message"]
+teks = pesan.get("content")
+if not teks:
+    sys.exit("Jawaban kosong; cek batas token/model.")
+teks = teks.strip().removeprefix("```json")
+teks = teks.removeprefix("```").removesuffix("```").strip()
+hasil = json.loads(teks)
+print("Tipe hasil:", type(hasil).__name__)
+print("Suara sah:", hasil["jumlah_sah"])

@@ -12,9 +12,11 @@ Kode untuk modul Pertemuan 5: pipeline OCR formulir C1 KPU (unduh terotomasi, ar
 | `kirim_s3.py` | Versi lengkap S3 (Langkah 2): unduh bila perlu lalu LANGSUNG unggah per berkas (streaming boto3), kawalc1 + Sirekap, verifikasi list_objects_v2. |
 | `kirim_s3_v1.py` | Tangga 1 S3 (Langkah 2): klien boto3 dengan Access key ID + Secret, uji head_bucket. |
 | `kirim_s3_v2.py` | Tangga 2 S3 (Langkah 2): unggah satu berkas dengan upload_file ke prefix terstruktur lalu verifikasi head_object. |
-| `ocr_c1.py` | Versi lengkap OCR (Langkah 5): prompt JSON, parsing jawaban, mode --simulasi, fungsi kirim_ocr(). |
+| `ocr_c1.py` | Tangga 5 OCR: fungsi kirim_ocr, validasi hasil, dan simulasi. |
 | `ocr_c1_v1.py` | Tangga 1 OCR (Langkah 5): uji jalur API dengan pesan teks saja. |
 | `ocr_c1_v2.py` | Tangga 2 OCR (Langkah 5): kirim satu gambar base64, jawaban mentah. |
+| `ocr_c1_v3.py` | Tangga 3 OCR: minta JSON, periksa jawaban mentah. |
+| `ocr_c1_v4.py` | Tangga 4 OCR: ubah JSON menjadi dict Python. |
 | `pipeline_c1.py` | Tangga 2 pipeline (Langkah 7): OCR nyata + simpan RDS per berkas dari folder lokal. |
 | `pipeline_c1_v1.py` | Tangga 1 pipeline (Langkah 7): loop seluruh scan_c1 dengan OCR tiruan, tanpa kunci AI. |
 | `pipeline_lengkap.py` | Tugas akhir (Langkah 8): pipeline utuh satu loop, unduh KPU -> arsip S3 -> ekstraksi AI -> simpan RDS; ada mode --simulasi. |

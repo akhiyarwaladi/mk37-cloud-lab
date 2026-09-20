@@ -26,8 +26,10 @@ respon = requests.post(
     json={"model": MODEL,
           "messages": [{"role": "user", "content": [
               {"type": "text",
-               "text": "Apa isi gambar ini? "
-                       "Jawab dalam dua kalimat."},
+               "text": "Jawab HANYA JSON: nama_formulir, "
+                       "tps, jumlah_sah, jumlah_tidak_sah, "
+                       "catatan. Angka tidak terbaca: null. "
+                       "Jangan menebak."},
               {"type": "image_url",
                "image_url": {"url": "data:image/jpeg;base64,"
                              + data}},

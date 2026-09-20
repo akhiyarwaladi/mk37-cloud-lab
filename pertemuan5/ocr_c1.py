@@ -6,15 +6,16 @@ import requests
 
 # ====== KONFIGURASI ======
 BASE_URL = "https://openrouter.ai/api/v1"
-API_KEY = ""              # API key OpenRouter milik Anda
-MODEL = "google/gemma-4-31b-it:free"  # gratis, cek katalog
+API_KEY = ""
+MODEL = "inclusionai/ling-3.0-flash-vl:free"
 # ========================
 
 PROMPT = """Baca formulir C1 pada gambar ini dan ekstrak angkanya.
 Jawab HANYA JSON valid tanpa penjelasan tambahan, dengan bentuk:
 {"nama_formulir": "...", "tps": "...", "jumlah_sah": 0,
  "jumlah_tidak_sah": 0, "catatan": "..."}
-Isi 0 bila ada angka yang tidak terbaca."""
+Isi null bila angka tidak terlihat atau tidak terbaca.
+Jangan menebak; jelaskan keterbatasan pada catatan."""
 
 def kirim_ocr(path_gambar):
     """Kirim satu gambar C1, kembalikan hasil ekstraksi sebagai dict."""
@@ -32,17 +33,32 @@ def kirim_ocr(path_gambar):
             {"type": "image_url", "image_url":
                 {"url": f"data:image/jpeg;base64,{data}"}},
         ]}],
-        "max_tokens": 500,
+        "max_tokens": 2500,
+        "reasoning": {"enabled": False},
     }
     respon = requests.post(
         f"{BASE_URL}/chat/completions",
         headers={"Authorization": f"Bearer {API_KEY}"},
         json=isi, timeout=120)
     respon.raise_for_status()
-    teks = respon.json()["choices"][0]["message"]["content"].strip()
-    # buang pembungkus json bila model menambahkannya
-    teks = teks.removeprefix("```json").removesuffix("```").strip()
-    return json.loads(teks)
+    jawaban = respon.json()["choices"][0]
+    teks = jawaban["message"].get("content")
+    if jawaban.get("finish_reason") == "length" or not teks:
+        raise ValueError("Jawaban terpotong/kosong; "
+                         "cek max_tokens atau ganti model.")
+    teks = teks.strip().removeprefix("```json")
+    teks = teks.removeprefix("```").removesuffix("```").strip()
+    hasil = json.loads(teks)
+    kolom = ("nama_formulir", "tps", "jumlah_sah",
+             "jumlah_tidak_sah", "catatan")
+    if not isinstance(hasil, dict) or any(
+            k not in hasil for k in kolom):
+        raise ValueError("JSON harus berisi lima kolom.")
+    for k in ("jumlah_sah", "jumlah_tidak_sah"):
+        n = hasil[k]
+        if n is not None and (type(n) is not int or n < 0):
+            raise ValueError(f"{k} harus integer >= 0/null.")
+    return hasil
 
 def simulasi():
     """Jawaban tiruan tanpa jaringan, untuk menguji pipeline."""

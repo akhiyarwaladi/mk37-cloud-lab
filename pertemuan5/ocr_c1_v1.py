@@ -3,8 +3,8 @@ import requests
 
 # ====== KONFIGURASI ======
 BASE_URL = "https://openrouter.ai/api/v1"
-API_KEY = ""              # API key OpenRouter milik Anda
-MODEL = "google/gemma-4-31b-it:free"  # gratis, cek katalog
+API_KEY = ""
+MODEL = "inclusionai/ling-3.0-flash-vl:free"
 # ========================
 
 if not API_KEY:
@@ -15,7 +15,9 @@ respon = requests.post(
     headers={"Authorization": f"Bearer {API_KEY}"},
     json={"model": MODEL,
           "messages": [{"role": "user",
-                        "content": "Balas satu kata: siap"}]},
+                        "content": "Balas satu kata: siap"}],
+          "max_tokens": 2500,
+          "reasoning": {"enabled": False}},
     timeout=60)
 respon.raise_for_status()
 balasan = respon.json()["choices"][0]["message"]["content"]
