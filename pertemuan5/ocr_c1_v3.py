@@ -11,13 +11,13 @@ MODEL = "inclusionai/ling-3.0-flash-vl:free"
 
 if not API_KEY:
     sys.exit("Isi API_KEY pada blok KONFIGURASI dulu.")
-GAMBAR = "scan_c1/c1-plano.jpeg"
+GAMBAR = "scan_c1/sirekap-1105072002001-2.jpg"
 if len(sys.argv) > 1:
     GAMBAR = sys.argv[1]
 path = Path(GAMBAR)
 if not path.exists():
     sys.exit(f"Berkas {GAMBAR} tidak ada; "
-             "jalankan unduh_c1.py dulu.")
+             "jalankan unduh_sirekap_v2.py dulu.")
 
 data = base64.b64encode(path.read_bytes()).decode()
 respon = requests.post(
@@ -26,10 +26,12 @@ respon = requests.post(
     json={"model": MODEL,
           "messages": [{"role": "user", "content": [
               {"type": "text",
-               "text": "Jawab HANYA JSON: nama_formulir, "
-                       "tps, jumlah_sah, jumlah_tidak_sah, "
-                       "catatan. Angka tidak terbaca: null. "
-                       "Jangan menebak."},
+               "text": "Baca suara tiap calon. Jawab JSON: "
+                       "suara_01, suara_02, suara_03. "
+                       "Nilai integer atau null, bukan string. "
+                       "Cocokkan angka dan terbilang. "
+                       "X pengisi kosong; NIHIL = 0. "
+                       "Tidak terlihat: null. Jangan menebak."},
               {"type": "image_url",
                "image_url": {"url": "data:image/jpeg;base64,"
                              + data}},

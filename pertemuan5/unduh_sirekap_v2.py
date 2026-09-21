@@ -17,10 +17,11 @@ def ambil_json(url):
 
 tps = ambil_json(f"{BASIS}/pemilu/hhcw/ppwp/11/1105/110507/"
                  f"1105072002/{TPS}.json")
-url_foto = tps["images"][0]
-print("foto pertama:", url_foto)
+url_foto = tps["images"][1]  # indeks 1 = foto kedua
+print("foto suara calon:", url_foto)
 unduhan = requests.get(url_foto, timeout=60, headers=KEPALA)
-tujuan = FOLDER / f"sirekap-{TPS}-1.jpg"
+tujuan = FOLDER / f"sirekap-{TPS}-2.jpg"
+unduhan.raise_for_status()
 tujuan.write_bytes(unduhan.content)
 ukuran = len(unduhan.content) // 1024
 print("tersimpan:", tujuan, f"({ukuran} KB)")

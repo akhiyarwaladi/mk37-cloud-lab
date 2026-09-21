@@ -40,6 +40,7 @@ for urutan, url_foto in enumerate(data.get("images", []), 1):
     tujuan = FOLDER / nama
     if not tujuan.exists():          # 1) unduh bila belum ada
         unduhan = requests.get(url_foto, timeout=60, headers=KEPALA)
+        unduhan.raise_for_status()
         tujuan.write_bytes(unduhan.content)
         print("terunduh:", nama)
         time.sleep(1)                # sopan pada sumber KPU

@@ -1,2 +1,2 @@
 database mk37c1 dan tabel hasil_ocr siap
-tersimpan di RDS: c1-plano.jpeg
+tersimpan di RDS: sirekap-1105072002001-2.jpg

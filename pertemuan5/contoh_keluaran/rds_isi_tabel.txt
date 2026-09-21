@@ -1,1 +1,4 @@
-('c1-plano.jpeg', '036', 203, 8, 'simulasi')
+Berkas: sirekap-1105072002001-2.jpg | model: simulasi
+01 121
+02 15
+03 0

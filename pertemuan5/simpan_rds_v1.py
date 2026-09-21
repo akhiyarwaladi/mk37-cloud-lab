@@ -1,8 +1,8 @@
 import sys
 import pymysql
 
-# ====== KONFIGURASI (isi sesuai RDS Anda, Langkah 3) ======
-RDS_HOST = ""         # endpoint RDS Anda (Langkah 3)
+# ====== KONFIGURASI (isi sesuai RDS Anda, Langkah 4) ======
+RDS_HOST = ""         # endpoint RDS Anda (Langkah 4)
 RDS_PORT = 3306
 RDS_USER = "admin"
 RDS_PASSWORD = ""     # kata sandi master Anda

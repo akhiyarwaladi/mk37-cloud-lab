@@ -2,8 +2,8 @@ import json
 import sys
 import pymysql
 
-# ====== KONFIGURASI (isi sesuai RDS Anda, Langkah 3) ======
-RDS_HOST = ""         # endpoint RDS Anda (Langkah 3)
+# ====== KONFIGURASI (isi sesuai RDS Anda, Langkah 4) ======
+RDS_HOST = ""         # endpoint RDS Anda (Langkah 4)
 RDS_PORT = 3306
 RDS_USER = "admin"
 RDS_PASSWORD = ""     # kata sandi master Anda
@@ -51,7 +51,7 @@ def simpan(nama_berkas, hasil, model):
              jumlah_tidak_sah=VALUES(jumlah_tidak_sah),
              detail=VALUES(detail), model=VALUES(model), waktu_ocr=NOW()"""
     nilai = (nama_berkas, hasil.get("tps"),
-             hasil.get("jumlah_sah", 0), hasil.get("jumlah_tidak_sah", 0),
+             hasil.get("jumlah_sah"), hasil.get("jumlah_tidak_sah"),
              json.dumps(hasil, ensure_ascii=False), model)
     kn = sambung()
     try:

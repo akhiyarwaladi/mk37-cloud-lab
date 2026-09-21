@@ -5,7 +5,7 @@
 # Kode identik dengan modul PDF; kredensial diganti placeholder.
 # ============================================================
 
-# ---- Langkah 4: kredensial RDS pada env var + pustaka pymysql ----
+# ---- Langkah 5: pasang pymysql; kredensial di blok KONFIGURASI Python ----
 source ~/weather-app/venv/bin/activate
 pip install pymysql
 

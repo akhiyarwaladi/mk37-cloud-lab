@@ -5,6 +5,6 @@
 # Kode identik dengan modul PDF; kredensial diganti placeholder.
 # ============================================================
 
-# ---- Langkah 2: pasang pustaka boto3 pada venv ----
+# ---- Langkah 3: pasang pustaka boto3 pada venv ----
 pip install boto3
 

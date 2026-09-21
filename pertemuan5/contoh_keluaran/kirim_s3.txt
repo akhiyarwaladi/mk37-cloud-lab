@@ -1,16 +1,7 @@
-terunduh: c1-plano.jpeg
-langsung terunggah: c1/kawalc1/c1-plano.jpeg
-terunduh: c1-pilpres-1.jpg
-langsung terunggah: c1/kawalc1/c1-pilpres-1.jpg
-terunduh: c1-pilgub-1.jpg
-langsung terunggah: c1/kawalc1/c1-pilgub-1.jpg
 langsung terunggah: c1/sirekap/1105072002001/sirekap-1105072002001-1.jpg
 langsung terunggah: c1/sirekap/1105072002001/sirekap-1105072002001-2.jpg
 langsung terunggah: c1/sirekap/1105072002001/sirekap-1105072002001-3.jpg
-verifikasi: 6 objek pada prefix c1/
-  c1/kawalc1/c1-pilgub-1.jpg (145921 B)
-  c1/kawalc1/c1-pilpres-1.jpg (68394 B)
-  c1/kawalc1/c1-plano.jpeg (145921 B)
+verifikasi: 3 objek TPS
   c1/sirekap/1105072002001/sirekap-1105072002001-1.jpg (770436 B)
   c1/sirekap/1105072002001/sirekap-1105072002001-2.jpg (718205 B)
   c1/sirekap/1105072002001/sirekap-1105072002001-3.jpg (601041 B)

@@ -6,5 +6,8 @@
 # ============================================================
 
 # ---- Langkah 1: buat folder kerja ----
-mkdir ~/ocr-c1 && cd ~/ocr-c1
+mkdir -p ~/ocr-c1
+cd ~/ocr-c1
+source ~/weather-app/venv/bin/activate
+python -m pip install requests
 

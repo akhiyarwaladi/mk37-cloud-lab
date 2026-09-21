@@ -10,12 +10,19 @@ API_KEY = ""
 MODEL = "inclusionai/ling-3.0-flash-vl:free"
 # ========================
 
-PROMPT = """Baca formulir C1 dan ekstrak angkanya.
-Jawab HANYA JSON valid tanpa penjelasan tambahan, dengan bentuk:
-{"nama_formulir": "...", "tps": "...", "jumlah_sah": 0,
- "jumlah_tidak_sah": 0, "catatan": "..."}
-Isi null bila angka tidak terlihat atau tidak terbaca.
-Jangan menebak; jelaskan keterbatasan pada catatan."""
+PROMPT = """Baca satu halaman formulir Pilpres 2024.
+Jawab HANYA JSON dengan semua kolom berikut:
+nama_formulir, tps, suara_01, suara_02, suara_03,
+jumlah_sah, jumlah_tidak_sah, catatan.
+tps hanya nomor TPS, bukan kecamatan/desa.
+Suara 01 = Anies-Muhaimin, 02 = Prabowo-Gibran,
+03 = Ganjar-Mahfud. Cocokkan angka dengan terbilang.
+X pengisi kosong; NIHIL berarti 0.
+Kolom tidak terlihat/tidak terbaca pada foto: null.
+jumlah_sah hanya disalin jika tercetak pada foto.
+Jangan mengisi jumlah_sah dari penjumlahan sendiri.
+Nilai suara harus integer atau null, bukan string.
+Jangan menebak. Catat keterbatasan pada catatan."""
 
 def kirim_ocr(path_gambar):
     """Kirim gambar C1 dan kembalikan dictionary."""
@@ -25,7 +32,7 @@ def kirim_ocr(path_gambar):
     path = Path(path_gambar)
     if not path.exists():
         sys.exit(f"Berkas {path_gambar} tidak ada; "
-                 "jalankan unduh_c1.py dulu.")
+                 "jalankan unduh_sirekap_v2.py dulu.")
     data = base64.b64encode(path.read_bytes()).decode()
     isi = {
         "model": MODEL,
@@ -50,26 +57,32 @@ def kirim_ocr(path_gambar):
     teks = teks.strip().removeprefix("```json")
     teks = teks.removeprefix("```").removesuffix("```").strip()
     hasil = json.loads(teks)
-    kolom = ("nama_formulir", "tps", "jumlah_sah",
-             "jumlah_tidak_sah", "catatan")
+    kolom = ("nama_formulir", "tps", "suara_01", "suara_02",
+             "suara_03", "jumlah_sah", "jumlah_tidak_sah",
+             "catatan")
     if not isinstance(hasil, dict) or any(
             k not in hasil for k in kolom):
-        raise ValueError("JSON harus berisi lima kolom.")
-    for k in ("jumlah_sah", "jumlah_tidak_sah"):
+        raise ValueError("JSON harus berisi delapan kolom.")
+    for k in ("suara_01", "suara_02", "suara_03",
+              "jumlah_sah", "jumlah_tidak_sah"):
         n = hasil[k]
+        if isinstance(n, str) and n.strip().isdecimal():
+            n = int(n)
+            hasil[k] = n
         if n is not None and (type(n) is not int or n < 0):
             raise ValueError(f"{k} harus integer >= 0/null.")
     return hasil
 
 def simulasi():
     """Jawaban tiruan tanpa jaringan, untuk menguji pipeline."""
-    return {"nama_formulir": "C1 Plano (simulasi)",
-            "tps": "036",
-            "jumlah_sah": 203, "jumlah_tidak_sah": 8,
+    return {"nama_formulir": "C.HASIL-PPWP (simulasi)",
+            "tps": "001", "suara_01": 121,
+            "suara_02": 15, "suara_03": 0,
+            "jumlah_sah": None, "jumlah_tidak_sah": None,
             "catatan": "hasil tiruan untuk uji pipeline"}
 
 if __name__ == "__main__":
-    gambar = "scan_c1/c1-plano.jpeg"
+    gambar = "scan_c1/sirekap-1105072002001-2.jpg"
     if len(sys.argv) > 1 and not sys.argv[1].startswith("--"):
         gambar = sys.argv[1]
     if "--simulasi" in sys.argv:

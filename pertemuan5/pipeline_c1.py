@@ -1,6 +1,6 @@
 from pathlib import Path
 import sys
-from ocr_c1 import kirim_ocr
+from ocr_c1 import kirim_ocr, MODEL
 from simpan_rds import siapkan_tabel, simpan
 
 # Cron menjalankan skrip dari folder rumah, maka path di-anchor
@@ -8,15 +8,15 @@ from simpan_rds import siapkan_tabel, simpan
 FOLDER = Path(__file__).resolve().parent / "scan_c1"
 
 if not FOLDER.exists():
-    sys.exit("Folder scan_c1 tidak ada; jalankan unduh_c1.py dulu.")
+    sys.exit("Folder scan_c1 tidak ada; jalankan unduh_sirekap.py dulu.")
 
 siapkan_tabel()             # CREATE TABLE dulu
 berhasil = 0
-for gambar in sorted(FOLDER.iterdir()):
+for gambar in sorted(FOLDER.glob("sirekap-*.jpg")):
     print("memproses:", gambar.name)
     try:
         hasil = kirim_ocr(gambar)
-        simpan(gambar.name, hasil, model="ocr-ai")
+        simpan(gambar.name, hasil, model=MODEL)
         berhasil += 1
     except Exception as galat:
         print("  gagal, lanjut berikutnya:", galat)

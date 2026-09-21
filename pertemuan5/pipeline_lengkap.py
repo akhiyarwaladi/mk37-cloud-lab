@@ -3,7 +3,7 @@ import time
 from pathlib import Path
 import boto3
 import requests
-from ocr_c1 import kirim_ocr, simulasi
+from ocr_c1 import kirim_ocr, simulasi, MODEL
 from simpan_rds import siapkan_tabel, simpan, RDS_HOST, RDS_PASSWORD
 
 # ====== KONFIGURASI (kunci kelas, Pertemuan 4) ======
@@ -50,6 +50,7 @@ for urutan, url_foto in enumerate(data.get("images", []), 1):
     try:
         if not tujuan.exists():      # 1) unduh bila belum ada
             unduhan = requests.get(url_foto, timeout=60, headers=KEPALA)
+            unduhan.raise_for_status()
             tujuan.write_bytes(unduhan.content)
             print("terunduh:", nama)
             time.sleep(1)            # sopan pada sumber KPU
@@ -59,7 +60,7 @@ for urutan, url_foto in enumerate(data.get("images", []), 1):
         if "--simulasi" in sys.argv: # 3) ekstraksi AI
             hasil, model = simulasi(), "simulasi"
         else:
-            hasil, model = kirim_ocr(tujuan), "ocr-ai"
+            hasil, model = kirim_ocr(tujuan), MODEL
         simpan(nama, hasil, model)   # 4) simpan RDS
         tuntas += 1
     except Exception as galat:

@@ -38,6 +38,7 @@ for j, url in enumerate(info.get("images", []), 1):
         print("sudah ada, lewati:", tujuan.name)
         continue
     unduhan = requests.get(url, timeout=60, headers=KEPALA)
+    unduhan.raise_for_status()
     tujuan.write_bytes(unduhan.content)
     ukuran = len(unduhan.content) // 1024
     print("tersimpan:", tujuan, f"({ukuran} KB)")

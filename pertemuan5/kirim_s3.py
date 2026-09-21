@@ -1,7 +1,5 @@
 import boto3
-import time
 from pathlib import Path
-import requests
 
 # ====== KONFIGURASI (kunci kelas, Pertemuan 4) ======
 AWS_ACCESS_KEY_ID = ""
@@ -18,39 +16,17 @@ s3 = boto3.client("s3", region_name=S3_REGION,
 FOLDER = Path("scan_c1")
 FOLDER.mkdir(exist_ok=True)
 
-# Tiap entri: (nama, URL sumber, kunci S3). Unduh bila perlu,
-# lalu LANGSUNG unggah; loop tidak menunggu unduhan lain.
-DAFTAR = [
-    ("c1-plano.jpeg",
-     "https://raw.githubusercontent.com/kawalc1/kawalc1/master/"
-     "static/datasets/C1-plano-original.jpeg", "c1/kawalc1/c1-plano.jpeg"),
-    ("c1-pilpres-1.jpg",
-     "https://raw.githubusercontent.com/kawalc1/kawalc1/master/"
-     "static/contoh-pilpres-2019/1.JPG", "c1/kawalc1/c1-pilpres-1.jpg"),
-    ("c1-pilgub-1.jpg",
-     "https://raw.githubusercontent.com/kawalc1/kawalc1/master/"
-     "static/contoh-pilgub/1.jpeg", "c1/kawalc1/c1-pilgub-1.jpg"),
-]
-
-for nama, url, kunci in DAFTAR:
-    tujuan = FOLDER / nama
-    if not tujuan.exists():
-        respon = requests.get(url, timeout=30,
-                              headers={"User-Agent": "mk37-kelas/1.0"})
-        respon.raise_for_status()
-        tujuan.write_bytes(respon.content)
-        print("terunduh:", nama)
-        time.sleep(1)                    # sopan pada sumber publik
-    s3.upload_file(str(tujuan), NAMA_BUCKET, kunci)
-    print("langsung terunggah:", kunci)
-
 # Foto Sirekap dari Langkah 1: arsipkan ke prefix kode TPS.
-for foto in sorted(FOLDER.glob("sirekap-*.jpg")):
+foto_tps = sorted(FOLDER.glob(f"sirekap-{KODE_TPS}-*.jpg"))
+if not foto_tps:
+    raise SystemExit("Jalankan unduh_sirekap.py dulu.")
+for foto in foto_tps:
     kunci = f"c1/sirekap/{KODE_TPS}/{foto.name}"
     s3.upload_file(str(foto), NAMA_BUCKET, kunci)
     print("langsung terunggah:", kunci)
 
-sejajar = s3.list_objects_v2(Bucket=NAMA_BUCKET, Prefix="c1/")
-print(f"verifikasi: {sejajar['KeyCount']} objek pada prefix c1/")
+sejajar = s3.list_objects_v2(
+    Bucket=NAMA_BUCKET, Prefix=f"c1/sirekap/{KODE_TPS}/")
+print("verifikasi:", sejajar["KeyCount"], "objek TPS")
 for objek in sejajar.get("Contents", []):
     print(" ", objek["Key"], f"({objek['Size']} B)")
