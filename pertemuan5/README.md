@@ -19,6 +19,7 @@ Kode untuk modul Pertemuan 5: pipeline OCR formulir C1 KPU (unduh terotomasi, ar
 | `ocr_c1_v2.py` | Tangga 2 OCR (Langkah 2): kirim satu gambar base64, jawaban mentah. |
 | `ocr_c1_v3.py` | Tangga 3 OCR: minta JSON, periksa jawaban mentah. |
 | `ocr_c1_v4.py` | Tangga 4 OCR: ubah JSON menjadi dict Python. |
+| `periksa_suara.py` | Bandingkan suara AI dengan chart Sirekap per pasangan; tandai selisih. |
 | `pipeline_c1.py` | Tangga 2 pipeline (Langkah 7): OCR nyata + simpan RDS per berkas dari folder lokal. |
 | `pipeline_c1_v1.py` | Tangga 1 pipeline (Langkah 7): loop seluruh scan_c1 dengan OCR tiruan, tanpa kunci AI. |
 | `pipeline_lengkap.py` | Tugas akhir (Langkah 8): pipeline utuh satu loop, unduh KPU -> arsip S3 -> ekstraksi AI -> simpan RDS; ada mode --simulasi. |
